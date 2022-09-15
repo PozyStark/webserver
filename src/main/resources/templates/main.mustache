@@ -1,0 +1,37 @@
+<!--<!DOCTYPE html>-->
+<html>
+<head>
+<!--    <meta charset="UTF-8">-->
+    <title>Add message</title>
+</head>
+<body>
+    <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+
+    <form method="post" action="/main">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="text" placeholder="Text">
+        <input type="text" name="tag" placeholder="Tag">
+        <button type="submit">Enter</button>
+    </form>
+
+    <form method="post" action="filter">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="filter" placeholder="enter tag">
+        <button type="submit">Search</button>
+    </form>
+
+    {{#messages}}
+        <div>
+                <b>{{id}}</b>
+                <span>{{text}}</span>
+                <i>{{tag}}</i>
+        </div>
+    {{/messages}}
+
+</body>
+</html>
